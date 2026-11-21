@@ -34,3 +34,16 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Aissa Mohammed | Corporate Portfolio
+
+A high-performance, bilingual (EN/FR) portfolio built for the MENA market.
+
+## 🛠 Tech Stack
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS + Framer Motion
+- **Language:** TypeScript
+- **State:** React Context (Bilingual Support)
+- **Background:** HTML5 Canvas Constellation Effect
+
+## 🚀 Deployment
+Deployed via Vercel/Netlify.
