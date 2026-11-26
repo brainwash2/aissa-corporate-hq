@@ -1,64 +1,87 @@
 "use client";
 
-import { Code2, Globe } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useState } from "react";
+import { ArrowUpRight, BrainCircuit, Menu, X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
   const { language, toggleLanguage, t } = useLanguage();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const links = [
+    { label: t({ en: "Work", fr: "Projets" }), href: "#work" },
+    { label: t({ en: "Services", fr: "Services" }), href: "#services" },
+    { label: t({ en: "About", fr: "À propos" }), href: "#about" },
+  ];
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-blue-500/20">
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xl font-bold">
-            <Code2 className="text-blue-500" size={28} />
-            <span className="text-white">AM</span>
-            <span className="text-blue-500">|</span>
-            <span className="text-white">Solutions</span>
-          </div>
+    <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-[#090b0a]/90 backdrop-blur-xl">
+      <nav aria-label="Main navigation" className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
+        <a href="#top" onClick={closeMenu} className="group flex items-center gap-2.5" aria-label="Brain Studio home">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#d7f36b] text-[#11150c]">
+            <BrainCircuit size={21} strokeWidth={2.1} />
+          </span>
+          <span className="text-sm font-extrabold tracking-[0.12em] text-white">BRAIN<span className="text-[#d7f36b]">STUDIO</span></span>
+        </a>
 
-          <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('expertise')}
-              className="text-gray-300 hover:text-blue-500 transition-colors"
-            >
-              {t({ en: 'Expertise', fr: 'Expertise' })}
-            </button>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="text-gray-300 hover:text-blue-500 transition-colors"
-            >
-              {t({ en: 'The 20 Projects', fr: 'Les 20 Projets' })}
-            </button>
-            <button
-              onClick={() => scrollToSection('experience')}
-              className="text-gray-300 hover:text-blue-500 transition-colors"
-            >
-              {t({ en: 'Experience', fr: 'Expérience' })}
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-gray-300 hover:text-blue-500 transition-colors"
-            >
-              Contact
-            </button>
-          </div>
-
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="text-sm text-[#a0aaa0] transition-colors hover:text-white">
+              {link.label}
+            </a>
+          ))}
           <button
+            type="button"
             onClick={toggleLanguage}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/30 hover:bg-blue-500/20 transition-all"
+            className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-bold text-[#d7f36b] transition-colors hover:border-[#d7f36b]/50"
+            aria-label="Change language"
           >
-            <Globe size={18} className="text-blue-500" />
-            <span className="text-white font-semibold">
-              {language === 'en' ? 'EN' : 'FR'}
-            </span>
+            {language.toUpperCase()}
+          </button>
+          <a href="#contact" className="lime-button !px-4 !py-2.5 !text-xs">
+            {t({ en: "Start a project", fr: "Démarrer un projet" })}
+            <ArrowUpRight size={15} />
+          </a>
+        </div>
+
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="rounded-full border border-white/10 px-3 py-2 text-xs font-bold text-[#d7f36b]"
+            aria-label="Change language"
+          >
+            {language.toUpperCase()}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((open) => !open)}
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-white"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <X size={19} /> : <Menu size={19} />}
           </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {menuOpen && (
+        <div className="border-t border-white/[0.07] bg-[#0d110e] px-5 py-5 md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4">
+            {links.map((link) => (
+              <a key={link.href} href={link.href} onClick={closeMenu} className="py-1 text-sm text-[#c2cbbf]">
+                {link.label}
+              </a>
+            ))}
+            <a href="#contact" onClick={closeMenu} className="lime-button mt-1 w-full">
+              {t({ en: "Start a project", fr: "Démarrer un projet" })}
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }

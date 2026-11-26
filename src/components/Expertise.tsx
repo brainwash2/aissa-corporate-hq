@@ -1,98 +1,92 @@
 "use client";
 
-import { Globe, Blocks, Zap } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { ArrowUpRight, Bot, Code2, ShoppingCart } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Expertise() {
   const { t } = useLanguage();
 
-  const expertiseAreas = [
+  const services = [
     {
-      icon: Globe,
-      title: t({ en: 'Web2 Solutions', fr: 'Solutions Web2' }),
+      number: "01",
+      icon: Code2,
+      title: t({ en: "Web products & platforms", fr: "Produits et plateformes web" }),
       description: t({
-        en: 'SaaS Dashboards, E-commerce (Algeria/Stripe).',
-        fr: 'Tableaux de bord SaaS, E-commerce (Algérie/Stripe).'
+        en: "Web applications, portals, dashboards, and SaaS foundations built around the way your team actually works.",
+        fr: "Applications web, portails, tableaux de bord et bases SaaS conçus autour de la façon dont votre équipe travaille réellement.",
       }),
-      tags: ['Next.js', 'TypeScript', 'Python', 'Tailwind'],
-      color: 'blue'
+      examples: ["Next.js", "TypeScript", "Supabase", "APIs"],
     },
     {
-      icon: Blocks,
-      title: t({ en: 'Web3 Engineering', fr: 'Ingénierie Web3' }),
+      number: "02",
+      icon: ShoppingCart,
+      title: t({ en: "Commerce & operations", fr: "Commerce et opérations" }),
       description: t({
-        en: 'DApp Development, Smart Contracts, Auditing.',
-        fr: 'Développement DApp, Smart Contracts, Audit.'
+        en: "E-commerce storefronts, catalogues, order workflows, booking experiences, and internal tools that make daily operations clearer.",
+        fr: "Boutiques e-commerce, catalogues, gestion des commandes, réservations et outils internes pour simplifier les opérations quotidiennes.",
       }),
-      tags: ['Solidity', 'Alchemy', 'Web3.js', 'Hardhat'],
-      color: 'amber'
+      examples: ["E-commerce", "Order flows", "Admin tools", "Analytics"],
     },
     {
-      icon: Zap,
-      title: t({ en: 'High Performance', fr: 'Haute Performance' }),
+      number: "03",
+      icon: Bot,
+      title: t({ en: "Practical AI integration", fr: "Intégration pratique de l’IA" }),
       description: t({
-        en: 'Backend Systems & Solana.',
-        fr: 'Systèmes Backend & Solana.'
+        en: "AI features connected to real business data and controlled workflows: document extraction, knowledge search, and human-reviewed assistance.",
+        fr: "Fonctionnalités IA connectées aux données et workflows métier : extraction de documents, recherche de connaissances et assistance avec validation humaine.",
       }),
-      tags: ['Rust', 'System Design', 'Solana', 'Performance'],
-      color: 'green'
-    }
+      examples: ["AI APIs", "RAG", "Document workflows", "Automation"],
+    },
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors: Record<string, { bg: string; border: string; text: string; icon: string }> = {
-      blue: { bg: 'bg-blue-500/10', border: 'border-blue-500/30', text: 'text-blue-400', icon: 'text-blue-500' },
-      amber: { bg: 'bg-amber-500/10', border: 'border-amber-500/30', text: 'text-amber-400', icon: 'text-amber-500' },
-      green: { bg: 'bg-green-500/10', border: 'border-green-500/30', text: 'text-green-400', icon: 'text-green-500' }
-    };
-    return colors[color];
-  };
-
   return (
-    <section id="expertise" className="py-20 relative z-10">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-4">
-            {t({ en: 'Expertise', fr: 'Expertise' })}
-          </h2>
-          <p className="text-gray-400 text-xl">
+    <section id="services" className="section-anchor border-y border-white/[0.07] bg-[#0d110e]/70 py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="mb-14 max-w-2xl">
+          <p className="eyebrow mb-4">{t({ en: "What Brain Studio does", fr: "Les services de Brain Studio" })}</p>
+          <h2 className="section-title">{t({ en: "The right tool for the problem.", fr: "Le bon outil pour le bon problème." })}</h2>
+          <p className="muted-copy mt-5">
             {t({
-              en: 'Bridging Finance and Technology',
-              fr: 'Pont entre Finance et Technologie'
+              en: "Start with the business workflow, not the technology trend. Build only what creates a useful improvement.",
+              fr: "Partir du workflow métier, pas de la tendance technologique. Construire ce qui apporte une amélioration utile.",
             })}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {expertiseAreas.map((area, index) => {
-            const colors = getColorClasses(area.color);
-            const Icon = area.icon;
-
+        <div className="grid gap-4 lg:grid-cols-3">
+          {services.map((service) => {
+            const Icon = service.icon;
             return (
-              <div
-                key={index}
-                className={`${colors.bg} backdrop-blur-md rounded-xl border ${colors.border} p-8 hover:scale-105 transition-transform duration-300`}
-              >
-                <div className={`w-16 h-16 ${colors.bg} rounded-lg flex items-center justify-center mb-6 border ${colors.border}`}>
-                  <Icon className={colors.icon} size={32} />
+              <article key={service.number} className="panel p-7 sm:p-8">
+                <div className="flex items-center justify-between">
+                  <span className="eyebrow">{service.number}</span>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#d7f36b]/10 text-[#d7f36b]">
+                    <Icon size={21} />
+                  </span>
                 </div>
-
-                <h3 className="text-2xl font-bold text-white mb-4">{area.title}</h3>
-                <p className="text-gray-300 mb-6">{area.description}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  {area.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className={`px-3 py-1 ${colors.bg} border ${colors.border} rounded-full text-sm ${colors.text} font-medium`}
-                    >
-                      {tag}
+                <h3 className="mt-9 text-xl font-semibold tracking-tight text-white">{service.title}</h3>
+                <p className="muted-copy mt-4 min-h-[8rem] text-sm">{service.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {service.examples.map((example) => (
+                    <span key={example} className="rounded-full border border-white/[0.09] px-3 py-1.5 text-[0.68rem] text-[#aeb9ad]">
+                      {example}
                     </span>
                   ))}
                 </div>
-              </div>
+              </article>
             );
           })}
+        </div>
+
+        <div className="mt-10 flex flex-col gap-4 rounded-2xl border border-[#d7f36b]/20 bg-[#d7f36b]/[0.055] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div>
+            <p className="text-lg font-semibold text-white">{t({ en: "Have a workflow that needs fixing?", fr: "Un workflow à améliorer ?" })}</p>
+            <p className="mt-1 text-sm text-[#a0aaa0]">{t({ en: "Let's map the problem before choosing the technology.", fr: "Commençons par comprendre le problème avant de choisir la technologie." })}</p>
+          </div>
+          <a href="#contact" className="ghost-button shrink-0">
+            {t({ en: "Talk through the problem", fr: "Discuter du besoin" })}
+            <ArrowUpRight size={16} />
+          </a>
         </div>
       </div>
     </section>

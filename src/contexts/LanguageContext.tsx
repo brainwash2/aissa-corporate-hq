@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-type Language = 'en' | 'fr';
+type Language = "en" | "fr";
 
 interface LanguageContextType {
   language: Language;
@@ -13,15 +13,17 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>("en");
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'fr' : 'en');
+    setLanguage((previous) => (previous === "en" ? "fr" : "en"));
   };
 
-  const t = (translations: { en: string; fr: string }) => {
-    return translations[language];
-  };
+  const t = (translations: { en: string; fr: string }) => translations[language];
 
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
@@ -32,8 +34,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
 export function useLanguage() {
   const context = useContext(LanguageContext);
+
   if (!context) {
-    throw new Error('useLanguage must be used within LanguageProvider');
+    throw new Error("useLanguage must be used within LanguageProvider");
   }
+
   return context;
 }
