@@ -1,49 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Brain Studio
 
-## Getting Started
+Brain Studio is the independent software studio of Aissa Mohammed, a full-stack developer based in Algeria.
 
-First, run the development server:
+We design and build practical web software for businesses and early-stage products: e-commerce experiences, web platforms, internal tools, and AI-enabled workflows.
+
+## Positioning
+
+**Software that moves businesses forward.**
+
+- Full-stack web application development
+- E-commerce and commerce operations
+- Internal tools and dashboards
+- Practical AI integrations and workflow automation
+
+## Selected work
+
+The portfolio intentionally distinguishes commissioned client work from independently developed products.
+
+| Project | Relationship | Public demo | Source |
+|---|---|---|---|
+| Radia Store | Client project · active build | [Open demo](https://radia-store.vercel.app/) | Private |
+| ABC Store | Client project · active build | [Open demo](https://abc-store-seven.vercel.app/) | [Repository](https://github.com/brainwash2/abc-store) |
+| DzWire | Independent product | [Open demo](https://dzwire-news.vercel.app/) | [Repository](https://github.com/brainwash2/dzwire-clean) |
+| CryptoBrainNews | Independent prototype | [Open demo](https://cryptobrainnews.vercel.app/) | [Repository](https://github.com/brainwash2/cryptobrainnews) |
+
+Client work is presented only as work commissioned by clients. Independent products are labelled as self-initiated builds and are not represented as client engagements.
+
+## Tech
+
+The portfolio is built with Next.js, React, TypeScript, Tailwind CSS, and Lucide icons.
+
+## Local development
+
+Requirements: Node.js 20+ and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm run lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content and evidence rules
 
-## Learn More
+- Only link to repositories that exist and are publicly accessible.
+- Private source code is labelled as private; no fake Code button.
+- Do not invent customer outcomes, metrics, testimonials, or integrations.
+- Use client names, screenshots, and logos only with the client's permission.
+- Independent products must remain clearly labelled as independent work.
+- CryptoBrainNews is an independent prototype. Before promoting it as a commercial template, use original branding, layout, copy, and properly licensed imagery.
 
-To learn more about Next.js, take a look at the following resources:
+## Contact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Aissa Mohammed | Corporate Portfolio
-
-A high-performance, bilingual (EN/FR) portfolio built for the MENA market.
-
-## 🛠 Tech Stack
-- **Framework:** Next.js 15 (App Router)
-- **Styling:** Tailwind CSS + Framer Motion
-- **Language:** TypeScript
-- **State:** React Context (Bilingual Support)
-- **Background:** HTML5 Canvas Constellation Effect
-
-## 🚀 Deployment
-Deployed via Vercel/Netlify.
+- Instagram: [@brainworm2020](https://www.instagram.com/brainworm2020/)
+- GitHub: [@brainwash2](https://github.com/brainwash2)
